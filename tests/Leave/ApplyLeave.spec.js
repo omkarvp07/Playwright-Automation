@@ -10,7 +10,7 @@ test.beforeEach(async ({ page }) => {
     await page.locator('.orangehrm-login-button').click();
 
 });
-
+//Apply Leave Test Case
 test('Apply Leave', async ({ page }) => {
 
     // Click Leave
@@ -37,5 +37,16 @@ test('Apply Leave', async ({ page }) => {
 
     // Verify success message
     await expect(page.getByText('Successfully Saved')).toBeVisible();
+
+});
+
+//Cancel Leave Test Case
+test('Verify leave cancellation', async ({ page }) => {
+
+    await page.getByText('My Leave').click();
+
+    await page.getByRole('button', { name: 'Cancel' }).first().click();
+
+    await expect(page.getByText('Successfully Updated')).toBeVisible();
 
 });
